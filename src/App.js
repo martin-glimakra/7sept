@@ -1,25 +1,77 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import Movie from './components/Movie';
 
 function App() {
+
+  let film1 = {
+    title: 'starWars',
+    seats: [
+      {
+        name: 'frontseat',
+        id: 1,
+        booked: true
+      },
+      {
+        name: 'backseat',
+        id: 2,
+        booked: false
+      }
+    ]
+  }
+
+  let film2 = {
+    title: 'dieHard',
+    seats: [
+      {
+        name: 'frontseat',
+        id: 3,
+        booked: true
+      },
+      {
+        name: 'backseat',
+        id: 4,
+        booked: false
+      }
+    ]
+  }
+
+
+    let fakeDb = [
+      film1, film2
+    ]
+
+    const [marked, setMarked] = useState([])
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {fakeDb.map((movie) => <Movie 
+        movie={movie} 
+        marked={marked}
+        setMarked={setMarked}
+      />)}
+      <button onClick={() => console.log('marked', marked)}>kör</button>
     </div>
   );
 }
+    
+
+//   return (
+//     <div>
+//       {fakeDb.map(movie => <div>
+//         <h2>{movie.title}</h2>
+
+//         {movie.seats.map(seat => {
+//           return <div>
+//             <h3>{seat.name}</h3>
+//             {seat.booked ? <div>{seat.number} är bokad</div> : <div>{seat.number} <button onClick={() => handleClick(seat)}>Boka!</button></div>}
+//           </div>
+
+//         })}
+//       </div>)}
+//     </div>
+//   );
+// }
 
 export default App;
