@@ -1,6 +1,6 @@
 import D from './D'
 
-export default function m({ movie }) {
+export default function M({ movie }) {
   return (
     <div>
         {movie.title}
